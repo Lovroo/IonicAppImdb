@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary"> 
+    <ion-title>Moji Filmi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)" placeholder="Iščite filme ali serije"></ion-searchbar>
+
+  <ion-item>
+    <ion-label>Izberi vrsto</ion-label>
+    <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
+      <ion-select-option value="">Vse</ion-select-option>
+      <ion-select-option value="movie">Filmi</ion-select-option>
+      <ion-select-option value="series">Serije</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-list>
+
+    <ion-item button *ngFor="let item of (results | async)" [routerLink]="['/', 'movie', item.imdbID]">
+    <ion-avatar slot="start">
+      <img [src]="item.Poster" *ngIf="item.Poster !== 'N/A'"> 
+    </ion-avatar>
+
+      <ion-label text-wrap>
+        <h3>{{ item.Title }}</h3>
+        {{ item.Year }}
+      </ion-label>
+      <ion-icon slot="end" *ngIf="item.Type === 'movie'" name="videocam"></ion-icon>
+      <ion-icon slot="end" *ngIf="item.Type === 'series'" name="tv"></ion-icon>
+      <ion-icon slot="end" *ngIf="item.Type === 'game'" name="game-controller"></ion-icon>
+
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
