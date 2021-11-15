@@ -29,7 +29,7 @@
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4",
     "typescript": "~4.2.4",
-    "@ionic/app-scripts": "2.1.4"
+    "@ionic/app-scripts": "5.4.16"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.1.1",
